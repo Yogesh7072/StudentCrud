@@ -7,12 +7,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.5</version>
-<<<<<<< HEAD
+
 		<relativePath/> 
 <!-- lookup parent from repository -->
-=======
+
 		<relativePath /> <!-- lookup parent from repository -->
->>>>>>> 23bf702a96092fc2fef40d0cb327a1521850f975
+
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>StudentCrud</artifactId>
