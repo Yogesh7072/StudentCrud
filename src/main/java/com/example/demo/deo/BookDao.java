@@ -6,10 +6,12 @@ public class BookDao {
 
 	}
 
+// this is small changes in this file
 	public void git1() {
 
 	}
 
+	// that important work in git side
 	public void git2() {
 
 	}
