@@ -87,18 +87,27 @@ public class StudentController {
 			"application/json", "application/xml" })
 	public ResponseEntity<Student> updateEntity(@RequestBody Student student) {
 
-		Student stu = student;
+		Student updateStudent = studentService.updateStudent(student);
 
-		return new ResponseEntity<Student>(stu, HttpStatus.OK);
+		if (updateStudent != null) {
+			return new ResponseEntity<Student>(updateStudent, HttpStatus.OK);
+		} else {
 
+			return new ResponseEntity<Student>(updateStudent, HttpStatus.BAD_REQUEST);
+
+		}
 	}
 
 	@DeleteMapping(value = "/deleteStudent/{id}", consumes = { "application/json", "application/xml" }, produces = {
 			"application/json", "application/xml" })
 	public ResponseEntity<String> deleteEntity(@PathVariable int id) {
 
-		String s = "";
-		return new ResponseEntity<String>(HttpStatus.OK);
+		boolean deleteStudent = studentService.deleteStudent(id);
+
+		if (deleteStudent)
+			return new ResponseEntity<String>("Student delete sucessfully", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("not deleted your entity", HttpStatus.BAD_REQUEST);
 
 	}
 

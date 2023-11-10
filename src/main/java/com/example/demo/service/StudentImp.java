@@ -42,13 +42,32 @@ public class StudentImp implements StudentI {
 	@Override
 	public Student updateStudent(Student s) {
 		// TODO Auto-generated method stub
-		return null;
+
+		Student oldstudent = studentDao.getStudent(s.getId());
+
+		if (oldstudent != null) {
+
+			if (s.getNumber() != null)
+				oldstudent.setNumber(s.getNumber());
+			if (s.getsName() != null)
+				oldstudent.setsName(s.getsName());
+
+			Student saveStudent = studentDao.saveStudent(oldstudent);
+			return saveStudent;
+		} else {
+
+			return null;
+		}
 	}
 
 	@Override
 	public boolean deleteStudent(int id) {
+		
 		// TODO Auto-generated method stub
-		return false;
+		
+		boolean deleteStudent = studentDao.deleteStudent(id);
+		
+		return deleteStudent;
 	}
 
 	@Override

@@ -48,10 +48,19 @@ public class StudentDao implements StudentI {
 		return null;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean deleteStudent(int id) {
 		// TODO Auto-generated method stub
-		return false;
+
+		boolean existsById = srepo.existsById(id);
+
+		if (existsById) {
+			srepo.deleteById(id);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
