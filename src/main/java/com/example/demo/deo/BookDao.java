@@ -24,4 +24,24 @@ public class BookDao {
 
 	}
 
+	public void git5() {
+
+	}
+
+	public void git6() {
+
+	}
+
+	public void git7() {
+
+	}
+
+	public void git8() {
+
+	}
+
+	public void git9() {
+
+	}
+
 }
