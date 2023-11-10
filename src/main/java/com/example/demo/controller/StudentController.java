@@ -28,8 +28,14 @@ public class StudentController {
 	public ResponseEntity<Student> saveSingleEntity(@RequestBody Student student) {
 
 		Student stu = studentService.saveStudent(student);
+		if (stu != null) {
 
-		return new ResponseEntity<Student>(stu, HttpStatus.CREATED);
+			return new ResponseEntity<Student>(stu, HttpStatus.CREATED);
+		} else {
+
+			return new ResponseEntity<Student>(stu, HttpStatus.BAD_REQUEST);
+
+		}
 
 	}
 
@@ -37,14 +43,27 @@ public class StudentController {
 			"application/json", "application/xml" })
 	public ResponseEntity<List<Student>> saveAllEntity(@RequestBody List<Student> student) {
 
-		return new ResponseEntity<List<Student>>(student, HttpStatus.OK);
+		List<Student> saveAllStudent = studentService.saveAllStudent(student);
+		if (saveAllStudent != null) {
+
+			return new ResponseEntity<List<Student>>(saveAllStudent, HttpStatus.OK);
+		} else {
+
+			return new ResponseEntity<List<Student>>(saveAllStudent, HttpStatus.BAD_REQUEST);
+		}
 
 	}
 
 	@GetMapping(value = "/getStudent/{id}", produces = { "application/json", "application/xml" })
 	public ResponseEntity<Student> getSingleEntity(@PathVariable int id) {
+		Student student = studentService.getStudent(id);
+		if (student != null) {
+			return new ResponseEntity<Student>(student, HttpStatus.OK);
+		} else {
 
-		return new ResponseEntity<Student>(HttpStatus.OK);
+			return new ResponseEntity<Student>(student, HttpStatus.BAD_REQUEST);
+
+		}
 
 	}
 
@@ -53,8 +72,15 @@ public class StudentController {
 
 		ArrayList<Student> stu = new ArrayList<Student>();
 
-		return new ResponseEntity<List<Student>>(stu, HttpStatus.OK);
+		List<Student> findAllStudent = studentService.findAllStudent();
 
+		if (findAllStudent != null) {
+
+			return new ResponseEntity<List<Student>>(findAllStudent, HttpStatus.OK);
+		} else {
+
+			return new ResponseEntity<List<Student>>(findAllStudent, HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	@PutMapping(value = "/updateStudent", consumes = { "application/json", "application/xml" }, produces = {

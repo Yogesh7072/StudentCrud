@@ -24,21 +24,19 @@ public class StudentImp implements StudentI {
 	}
 
 	@Override
-	public List<Student> saveAllStudent(Student s) {
+	public List<Student> saveAllStudent(List<Student> s) {
 		// TODO Auto-generated method stub
-		return null;
+
+		List<Student> saveAllStudent = studentDao.saveAllStudent(s);
+
+		return saveAllStudent;
 	}
 
 	@Override
 	public Student getStudent(int id) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Student> getAllStudent() {
-		// TODO Auto-generated method stub
-		return null;
+		Student student = studentDao.getStudent(id);
+		return student;
 	}
 
 	@Override
@@ -51,6 +49,21 @@ public class StudentImp implements StudentI {
 	public boolean deleteStudent(int id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Student> saveAllStudent(Student s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> findAllStudent() {
+		// TODO Auto-generated method stub
+
+		List<Student> findAllStudent = studentDao.findAllStudent();
+
+		return findAllStudent;
 	}
 
 }
