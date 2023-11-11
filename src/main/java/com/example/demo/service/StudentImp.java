@@ -24,33 +24,65 @@ public class StudentImp implements StudentI {
 	}
 
 	@Override
+	public List<Student> saveAllStudent(List<Student> s) {
+		// TODO Auto-generated method stub
+
+		List<Student> saveAllStudent = studentDao.saveAllStudent(s);
+
+		return saveAllStudent;
+	}
+
+	@Override
+	public Student getStudent(int id) {
+		// TODO Auto-generated method stub
+		Student student = studentDao.getStudent(id);
+		return student;
+	}
+
+	@Override
+	public Student updateStudent(Student s) {
+		// TODO Auto-generated method stub
+
+		Student oldstudent = studentDao.getStudent(s.getId());
+
+		if (oldstudent != null) {
+
+			if (s.getNumber() != null)
+				oldstudent.setNumber(s.getNumber());
+			if (s.getsName() != null)
+				oldstudent.setsName(s.getsName());
+
+			Student saveStudent = studentDao.saveStudent(oldstudent);
+			return saveStudent;
+		} else {
+
+			return null;
+		}
+	}
+
+	@Override
+	public boolean deleteStudent(int id) {
+		
+		// TODO Auto-generated method stub
+		
+		boolean deleteStudent = studentDao.deleteStudent(id);
+		
+		return deleteStudent;
+	}
+
+	@Override
 	public List<Student> saveAllStudent(Student s) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Student getStudent(int id) {
+	public List<Student> findAllStudent() {
 		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Student> getAllStudent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<Student> findAllStudent = studentDao.findAllStudent();
 
-	@Override
-	public Student updateStudent(Student s) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean deleteStudent(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		return findAllStudent;
 	}
 
 }
